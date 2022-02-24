@@ -13,8 +13,10 @@ app.use((req, res, next) => {
 app.use(express.json());
 // ROUTES
 const routeUsers = require('./routes/usersRoutes');
+const routePosts = require('./routes/postRoutes');
 
 app.use("/api/user", routeUsers);
+app.use("/api/post", routePosts);
 
 
 module.exports = app;
@@ -31,3 +33,5 @@ module.exports = app;
 // .catch((error) => console.log(error));
 // OBJET API
 // objet lors require sur ce fichier (app.js)
+
+// ${postId}
