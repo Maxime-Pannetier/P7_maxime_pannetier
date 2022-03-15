@@ -6,4 +6,4 @@ const auth = require("../middlewares/auth");
 router.post('/createPost',auth, postController.createPost);
 router.get('/showAllPost',auth, postController.showAllPost);
 
-module.exports = router; 
+module.exports = router;  
