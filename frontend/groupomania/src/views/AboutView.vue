@@ -1,5 +1,20 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+    <firstPage/>
 </template>
+
+<script>
+// @ is an alias to /src
+import firstPage from '@/components/firstPageCompo.vue'
+
+export default {
+  name: 'firstPageCompo',
+  components: {
+    firstPage,
+  }
+}
+
+</script>
+
+<style scoped>
+
+</style>

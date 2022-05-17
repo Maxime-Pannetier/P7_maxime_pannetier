@@ -1,18 +1,50 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <CreatePost @newPost="getAllPosts()"/> <!-- @newPost = evenement arbitraire -->
+    <UsersPost v-for="post in posts"  v-bind:key="post.id" v-bind:post="post"/>
+    
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import UsersPost from '@/components/UsersPost.vue'
+import CreatePost from '@/components/CreatePost.vue'
+import axios from 'axios'
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
-  }
+    UsersPost, CreatePost
+  },
+  data(){
+    return{
+      posts:[] // liste de posts
+    };
+  },
+  mounted(){
+    this.getAllPosts();
+  },
+  methods:{
+    getAllPosts(){
+      console.log("recuperation de post");
+      axios.get("http://localhost:3000/api/post/showAllPost")
+      .then((response)=>{
+        console.log(response.data);
+        this.posts=response.data.posts;  
+      })
+      .catch((error)=>{
+        console.log(error.response.data);
+      });
+    },
+    }
 }
 </script>
+
+<style scoped>
+
+*{
+  border: solid 1px black;
+  background-color: blue;
+}
+</style>

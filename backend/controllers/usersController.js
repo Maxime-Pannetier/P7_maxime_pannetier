@@ -30,7 +30,7 @@ exports.signup = (req, res, next) => {
     
       bcrypt.hash(req.body.password, 10) // hash mdp
         .then(hash => { 
-            database.execute("INSERT INTO users (userName, password, isAdmin) VALUES (?, ?, ?)", [req.body.userName,hash,0])
+            database.execute("INSERT INTO users (email, password, isAdmin, prenom, nom) VALUES (?, ?, ?, ?, ?)", [req.body.email,hash,0,req.body.prenom,req.body.nom])
                 .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
                 .catch(error => {
                     console.log(error);
@@ -51,7 +51,7 @@ exports.signup = (req, res, next) => {
     
 //     // login = connection compte utilisateur avec mdp
      exports.login = (req, res, next) => {
-      database.execute("SELECT `userName`,`password`,`isAdmin`, `id` FROM users WHERE `userName`=?;", [req.body.userName])
+      database.execute("SELECT `email`,`password`,`isAdmin`, `id` FROM users WHERE `email`=?;", [req.body.email])
       .then(([rows, fields]) => {
         console.log(rows);
         if (rows.length ==0) {
