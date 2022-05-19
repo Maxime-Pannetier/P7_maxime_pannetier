@@ -1,9 +1,9 @@
 <template>
   <div>
   <nav>
-    <router-link to="/">Home</router-link> | <!-- cf router -->
-    <router-link to="/about">About</router-link> |
-    <router-link to="/connexion">connexion</router-link>
+    <router-link to="/">Le Mur</router-link> | <!-- cf router -->
+    <router-link to="/Connexion">Page de Connexion</router-link>
+    
 
   </nav>
   <router-view/>

@@ -9,32 +9,27 @@
             <!-- contenu du post -->
             <div class="postTextContent">{{post.postContent}}</div>
             <div class="postImageContent"></div>
-
-            <!-- afficher commentaires -->
-            <input class="showComment" type="button" value="afficher les commentaires">
-                   
-            <!-- contenu commentaire -->
-            <div class="postComments">
-                <div class="commentUsername"></div>
-                <div class="commentContent"></div>
-            </div>
         </div>
 
-        <!-- écrire un commentaire -->
-        <div class="sendComment">
-            <input type="text" class="createMyComment" name="createMyComment" placeholder="écrire un commentaire">
-            <input class="sendCommentButton" type="button" value="commenter">
-        </div>
+            <CreateComment v-bind:postId="this.post.id" />
+            <UsersComments v-bind:postId="this.post.id"/>
+            
+
     </div>
 
 </template>
 
 <script>
+
+import CreateComment from '@/components/Le_Mur/Commentaires/CreateComment.vue'
+import UsersComments from '../Commentaires/UsersComments.vue'
+
 export default {
-  name: 'UsersPost',
-  props: {
-    post: Object
-  }
+    name: "UsersPost",
+    props: {
+        post: Object,
+    },
+    components: { CreateComment, UsersComments }
 }
 </script>
 

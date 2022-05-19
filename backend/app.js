@@ -14,24 +14,11 @@ app.use(express.json());
 // ROUTES
 const routeUsers = require('./routes/usersRoutes');
 const routePosts = require('./routes/postRoutes');
+const routeComments = require('./routes/commentRoutes');
 
 app.use("/api/user", routeUsers);
-app.use("/api/post", routePosts);
+app.use("/api/posts", routePosts);
+app.use("/api/comment", routeComments);
 
 
 module.exports = app;
-// database.execute("INSERT INTO users (userName, password, isAdmin) VALUES (?, ?, ?)", ["user1","mdp1",0])
-// .then(([rows, fields]) => { console.log(rows);})
-// .catch((error) => console.log(error));
-
-
-
-// CONNEXION A LA BDD MYSQL
-
-// database.execute("SELECT * FROM p7groupomania.users WHERE users.userName = ?;", [req.body.username])
-// .then(([rows, fields]) => { console.log(rows);})
-// .catch((error) => console.log(error));
-// OBJET API
-// objet lors require sur ce fichier (app.js)
-
-// ${postId}

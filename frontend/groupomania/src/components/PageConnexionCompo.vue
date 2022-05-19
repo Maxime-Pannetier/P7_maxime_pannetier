@@ -27,12 +27,7 @@
         <span>Créer mon compte</span>
       </button>
     </div>
-
-
-            <!-- <input type="text" id="username" name="username" placeholder="username"  v-model="username" required>
-            <input type="text" id="password" name="password" placeholder="password" v-model ="password" required>
-            <input v-on:click="doLogin" type="button" value="Connexion">
-        </div> -->
+      
   </div>  
 </template>
 

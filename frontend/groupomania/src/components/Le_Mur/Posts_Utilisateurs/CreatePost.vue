@@ -22,7 +22,7 @@ export default {
   methods:{
     createPost(){
       console.log("creation de post");
-      axios.post("http://localhost:3000/api/post/createPost", {createPost:this.createPostContent} )
+      axios.post("http://localhost:3000/api/posts/", {createPost:this.createPostContent} )
       .then(()=>{
         this.$emit("newPost");
       })
@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 
 </style>

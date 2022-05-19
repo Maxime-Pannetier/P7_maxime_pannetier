@@ -8,8 +8,9 @@
 
 <script>
 // @ is an alias to /src
-import UsersPost from '@/components/UsersPost.vue'
-import CreatePost from '@/components/CreatePost.vue'
+
+import CreatePost from '@/components/Le_Mur/Posts_Utilisateurs/CreatePost.vue'
+import UsersPost from '@/components/Le_Mur/Posts_Utilisateurs/UsersPost.vue'
 import axios from 'axios'
 
 export default {
@@ -28,7 +29,7 @@ export default {
   methods:{
     getAllPosts(){
       console.log("recuperation de post");
-      axios.get("http://localhost:3000/api/post/showAllPost")
+      axios.get("http://localhost:3000/api/posts/")
       .then((response)=>{
         console.log(response.data);
         this.posts=response.data.posts;  
