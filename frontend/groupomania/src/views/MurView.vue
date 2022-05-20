@@ -32,7 +32,7 @@ export default {
       axios.get("http://localhost:3000/api/posts/")
       .then((response)=>{
         console.log(response.data);
-        this.posts=response.data.posts;  
+        this.posts=response.data.posts;
       })
       .catch((error)=>{
         console.log(error.response.data);

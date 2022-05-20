@@ -33,7 +33,7 @@
       createComment(){
         console.log("creation de commentaire");
         
-        axios.post("http://localhost:3000/api/comment/createComment", {createComment:this.createCommentContent, postId:this.postId} )
+        axios.post("http://localhost:3000/api/comment/", {createComment:this.createCommentContent, postId:this.postId} )
         .then(()=>{
          this.$emit("newComment");
           })

@@ -3,7 +3,7 @@
     <div class="usersPost">
         
         <!-- identité du poster -->
-        <div class="postUsername"></div>
+        <div class="postUsername">{{post.nom}} {{post.prenom}}</div>
 
         <div class="postContent">
             <!-- contenu du post -->
@@ -21,15 +21,18 @@
 
 <script>
 
+
 import CreateComment from '@/components/Le_Mur/Commentaires/CreateComment.vue'
 import UsersComments from '../Commentaires/UsersComments.vue'
 
 export default {
+
     name: "UsersPost",
     props: {
         post: Object,
     },
-    components: { CreateComment, UsersComments }
+    components: { CreateComment, UsersComments },
+
 }
 </script>
 
@@ -38,7 +41,6 @@ export default {
 
 .usersPost{
     width: 50%;
-    height: 400px;
     background-color: aqua;
 }
 

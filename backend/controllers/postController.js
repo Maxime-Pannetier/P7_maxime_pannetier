@@ -7,11 +7,7 @@ exports.createPost = (req, res, next) => {
 };
 
 exports.showAllPost = (req, res, next) => {
-    database.execute("SELECT * FROM posts ORDER BY id DESC")
+    database.execute("SELECT posts.id, postContent, nom, prenom FROM posts INNER JOIN users ON posts.users_id = users.id")
     .then(([rows, fields]) => res.status(200).json({ posts: rows }))
     .catch(error => res.status(500).json({ error:error.message }));
 };
-
-// exports.deletePost = (req, res, next) => {
-//     database.execute("DELETE FROM posts")
-// }
