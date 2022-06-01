@@ -7,7 +7,7 @@
         <!-- contenu commentaire -->
         <div v-for="(comment, index) in comments" v-bind:key="index" class="postCommentsList"  >
           <div v-if="this.postId === comment.post_id" class="postComment"  >
-            <div  class="commentUsername">{{comment.nom}}</div>
+            <div  class="commentUsername">{{comment.prenom}}  {{comment.nom}}</div>
             <div  class="commentContent">{{comment.commentsContent}}</div>
           </div>
         </div>
@@ -53,24 +53,45 @@ export default {
 
 <style scoped>
 
+.CommentsUsers{
+  width: 100%;
+  background-color: whitesmoke;
+  text-align: left;
+}
+
+/* BOUTON AFFICHER COMMENTAIRE */
+.showComment{
+  color: darkgray;
+  text-align: left;
+  border: none;
+  margin: 10px 0;
+  background-color: whitesmoke;
+  font-size: 15px;
+}
+
+/* LISTE DES COMMENTAIRES */
+.postCommentsList{
+  margin:5px 0;
+}
+
 .postComment{
   width: 100%;
-  background-color: white;
-  border: solid 2px blue;
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 30% 70%;
+  background-color: white;
+  border: solid 2px darkgrey;
 }
 
 .commentUsername{
-  width: 100%;
-  height: 50px;
-  border: solid 2px red;
+  margin: 10px;
+  text-align: center;
 }
 
 .commentContent{
-  width: 100%;
-  height: 50px;
-  border: solid 2px green;
+  
+  border-left: solid 1px darkgray;
+  padding: 10px;
+  
 }
 
 

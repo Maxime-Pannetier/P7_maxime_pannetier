@@ -1,5 +1,5 @@
 <template>
-    <div class="createComment">
+    <div class="createCommentForm">
 
         <input v-model="createCommentContent" type="text" class="createComment" name="createComment" placeholder="écrire un commentaire">
         <button @click="createComment()" class="sendComment" type="button">Envoyer</button>
@@ -48,5 +48,11 @@
 
 
 <style scoped>
+
+.createCommentForm{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
 
 </style>

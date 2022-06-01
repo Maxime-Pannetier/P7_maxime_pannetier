@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 require ("dotenv").config();
+const path = require('path');
 
 //CORS
 app.use((req, res, next) => {
@@ -15,6 +16,9 @@ app.use(express.json());
 const routeUsers = require('./routes/usersRoutes');
 const routePosts = require('./routes/postRoutes');
 const routeComments = require('./routes/commentRoutes');
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 
 app.use("/api/user", routeUsers);
 app.use("/api/posts", routePosts);

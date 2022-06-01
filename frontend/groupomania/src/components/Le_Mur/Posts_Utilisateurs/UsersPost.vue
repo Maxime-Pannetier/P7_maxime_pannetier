@@ -3,12 +3,14 @@
     <div class="usersPost">
         
         <!-- identité du poster -->
-        <div class="postUsername">{{post.nom}} {{post.prenom}}</div>
+        <div class="postUsername"> {{post.prenom}} {{post.nom}}</div>
 
         <div class="postContent">
             <!-- contenu du post -->
             <div class="postTextContent">{{post.postContent}}</div>
-            <div class="postImageContent"></div>
+            <div v-if="post.imgPost" class="postImageContent">
+                <img :src="'http://localhost:3000/images/'+post.imgPost"/>
+            </div>
         </div>
 
             <CreateComment v-bind:postId="this.post.id" />
@@ -39,53 +41,45 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+/* POST ENTIER */
 .usersPost{
     width: 50%;
-    background-color: aqua;
+    height: 100%;
+    background-color: whitesmoke;
+    border: solid 1px black;
+    border-radius: 20px;
+    margin: 20px auto;
+    padding: 10px;
 }
 
+/* NOM DU POSTER */
 .postUsername{
     width: 100px;
-    height: 33px;
-    margin-left: 48px;
-    background-color: blue;
+    height: 20px;
+    font-weight: bold;
+    color: black;
 }
 
+/* CONTENUE ENTIER DU POST */
 .postContent{
     width: 100%;
-    height: 300px;
-    background-color: red;
+    border: solid 1px black;
+    background-color: white;
+    text-align: left;
+    font-size: 18px;
+    margin: 10px auto;
 }
-
+    /* ZONE TEXTE */
 .postTextContent{
-    width: 90%;
-    height: 70%;
-    background-color: yellow;
+    width: 95%;
     margin: 10px auto;
     
 }
 
-.showComment{
-    display: block;
-    text-align: left;
-    margin: 10px 48px;
-}
-
-.postComments{
-    width: 90%;
-    height: 40px;
-    background-color: violet;
-    margin: auto;
-
-}
-
-.sendComment{
-    width: 90%;
-    height: 40px;
-    background-color: maroon;
-    margin: 10px auto;
-    display: grid;
-    grid-template-columns: 80% 20%;
+.postImageContent
+{
+    width: 100%;
+    text-align: center;
 }
 
 </style>

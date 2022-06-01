@@ -44,8 +44,4 @@ export default {
 
 <style scoped>
 
-*{
-  border: solid 1px black;
-  background-color: blue;
-}
 </style>
