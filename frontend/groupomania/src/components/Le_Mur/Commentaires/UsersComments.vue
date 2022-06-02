@@ -5,9 +5,9 @@
         <input class="showComment" type="button" value="afficher les commentaires" @click="showAllComment()">            
             
         <!-- contenu commentaire -->
-        <div v-for="(comment, index) in comments" v-bind:key="index" class="postCommentsList"  >
-          <div v-if="this.postId === comment.post_id" class="postComment"  >
-            <div  class="commentUsername">{{comment.prenom}}  {{comment.nom}}</div>
+        <div v-for="comment in comments" v-bind:key="comment.id" class="postCommentsList"  >
+          <div class="postComment"  >
+            <div  class="commentUsername">{{comment.prenom}} {{comment.nom}}</div>
             <div  class="commentContent">{{comment.commentsContent}}</div>
           </div>
         </div>
@@ -35,7 +35,7 @@ export default {
   methods:{
     showAllComment(){
       console.log("recuperation de commentaire");
-      axios.get("http://localhost:3000/api/comment/")
+      axios.get("http://localhost:3000/api/comment/"+this.postId)
       .then((response)=>{
         this.comments=response.data.comments;
       })
@@ -43,9 +43,7 @@ export default {
         console.log(error.response.data);
       });
     },
-    showPostId(){
-      console.log(this.postId);
-    }
+   
 
     }
 }

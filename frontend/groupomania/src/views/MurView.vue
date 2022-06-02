@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <CreatePost @newPost="getAllPosts()"/> <!-- @newPost = evenement arbitraire -->
-    <UsersPost v-for="post in posts"  v-bind:key="post.id" v-bind:post="post"/>
+    <UsersPost @postRemoved="getAllPosts()" v-for="post in posts"  v-bind:key="post.id" v-bind:post="post"/>
     
   </div>
 </template>

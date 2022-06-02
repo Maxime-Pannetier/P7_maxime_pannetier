@@ -3,7 +3,11 @@
     <div class="usersPost">
         
         <!-- identité du poster -->
-        <div class="postUsername"> {{post.prenom}} {{post.nom}}</div>
+        <div class="postUsername"> 
+            {{post.prenom}} {{post.nom}} 
+            <div v-if= "userId==post.users_id || isAdmin"  class="deleteButton" @click="deletePost()"><i class="fa-solid fa-trash"></i></div>
+        </div>
+        
 
         <div class="postContent">
             <!-- contenu du post -->
@@ -21,21 +25,57 @@
 
 </template>
 
-<script>
+
+<script >
 
 
 import CreateComment from '@/components/Le_Mur/Commentaires/CreateComment.vue'
 import UsersComments from '../Commentaires/UsersComments.vue'
+import axios from 'axios'
+
+
+
 
 export default {
 
     name: "UsersPost",
+    
     props: {
         post: Object,
     },
+    data(){
+    return{
+      userId:0,
+      isAdmin:false,
+    };
+  },
+    mounted(){
+    this.userId= parseInt(localStorage.getItem("userId"));
+    this.isAdmin= localStorage.getItem("isAdmin") == "1";
+    console.log(this.userId);
+  },
+
+    
     components: { CreateComment, UsersComments },
+    methods:{
+        deletePost(){
+            axios.delete("http://localhost:3000/api/posts/"+this.post.id)
+                .then((response)=>{
+                    this.$emit("postRemoved");
+                    console.log(response.data);
+      })
+      .catch((error)=>{
+        console.log(error.response.data);
+      });
+        }
+    },
 
 }
+
+//  v-if="post.user_id == user.userId || user.isAdmin == 1" class="deleteButton" @click="deletePost()"
+
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -54,8 +94,9 @@ export default {
 
 /* NOM DU POSTER */
 .postUsername{
-    width: 100px;
+    width: 100%;
     height: 20px;
+    text-align: left;
     font-weight: bold;
     color: black;
 }
@@ -80,6 +121,11 @@ export default {
 {
     width: 100%;
     text-align: center;
+}
+
+.deleteButton{
+    background-color: red;
+    float: right;
 }
 
 </style>

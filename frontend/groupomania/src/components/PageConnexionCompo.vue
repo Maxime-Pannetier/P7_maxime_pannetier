@@ -74,6 +74,8 @@ export default {
       .then((response)=>{
         console.log(response.data);
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("isAdmin",response.data.isAdmin);
+        localStorage.setItem("userId", response.data.userId);
       })
       .catch((error)=>{
         console.log(error.response.data);
@@ -81,10 +83,11 @@ export default {
     },
 
     doSignUp(){
-        console.log("bonjour " + this.prenom );
+        
         axios.post("http://localhost:3000/api/user/signup",{email:this.email, password:this.password, prenom:this.prenom, nom:this.nom})
         .then((response)=>{
           console.log(response.data);
+          console.log("bonjour " + this.prenom );
          })
         .catch((error)=>{
           console.log(error.response.data);

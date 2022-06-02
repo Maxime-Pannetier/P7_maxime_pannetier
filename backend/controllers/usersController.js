@@ -66,6 +66,7 @@ exports.signup = (req, res, next) => {
             console.log(user);
             res.status(200).json({
               userId: user.id,
+              isAdmin: user.isAdmin,
               token: jwt.sign(
                 { userId: user.id },
                 process.env.JWT_SECRET,
