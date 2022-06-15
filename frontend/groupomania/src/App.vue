@@ -1,12 +1,12 @@
 <template>
   <div>
-  <nav>
-    <router-link to="/">Le Mur</router-link> | <!-- cf router -->
+  <!-- <nav>
+    <router-link to="/">Le Mur</router-link> | 
     <router-link to="/Connexion">Page de Connexion</router-link>
-    
+  </nav> -->
 
-  </nav>
   <router-view/>
+  
   </div>
 </template>
 

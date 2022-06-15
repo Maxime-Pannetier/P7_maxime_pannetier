@@ -51,7 +51,7 @@ exports.signup = (req, res, next) => {
     
 //     // login = connection compte utilisateur avec mdp
      exports.login = (req, res, next) => {
-      database.execute("SELECT `email`,`password`,`isAdmin`, `id` FROM users WHERE `email`=?;", [req.body.email])
+      database.execute("SELECT `email`,`password`,`isAdmin`, `id`, `prenom` FROM users WHERE `email`=?;", [req.body.email])
       .then(([rows, fields]) => {
         console.log(rows);
         if (rows.length ==0) {
@@ -63,7 +63,6 @@ exports.signup = (req, res, next) => {
             if (!valid) {
               return res.status(401).json({ error: 'Mot de passe incorrect !' });
             }
-            console.log(user);
             res.status(200).json({
               userId: user.id,
               isAdmin: user.isAdmin,
@@ -71,7 +70,8 @@ exports.signup = (req, res, next) => {
                 { userId: user.id },
                 process.env.JWT_SECRET,
                 { expiresIn: '24h' }
-              )
+              ),
+              userPrenom: user.prenom,
             });
           })
           .catch(error => res.status(500).json({ error:error.message }));

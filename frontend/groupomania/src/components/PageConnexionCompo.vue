@@ -69,13 +69,19 @@ export default {
 
 // DO LOGIN + SO SIGNUP
      doLogin(){
-      console.log("bonjour");
+      
       axios.post("http://localhost:3000/api/user/login",{email:this.email, password:this.password})
       .then((response)=>{
         console.log(response.data);
+        
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("isAdmin",response.data.isAdmin);
         localStorage.setItem("userId", response.data.userId);
+        localStorage.setItem("userPrenom", response.data.userPrenom);
+        
+        this.$router.push(this.$route.query.redirect || '/Mur');
+        console.log("bonjour " + response.data.userPrenom);
+
       })
       .catch((error)=>{
         console.log(error.response.data);
@@ -87,7 +93,7 @@ export default {
         axios.post("http://localhost:3000/api/user/signup",{email:this.email, password:this.password, prenom:this.prenom, nom:this.nom})
         .then((response)=>{
           console.log(response.data);
-          console.log("bonjour " + this.prenom );
+          this.mode='login';
          })
         .catch((error)=>{
           console.log(error.response.data);
