@@ -7,7 +7,7 @@ exports.createComment = (req, res, next) => {
 };
 
 exports.showAllComment = (req, res, next) => {
-    database.execute("SELECT comments.id, commentsContent, nom, prenom, post_id FROM comments  INNER JOIN users ON comments.user_id = users.id WHERE post_id = ? ORDER BY comments.id DESC", [req.params.postId])
+    database.execute("SELECT comments.id, commentsContent, nom, prenom, post_id FROM comments  INNER JOIN users ON comments.user_id = users.id WHERE post_id = ? ORDER BY comments.id ASC", [req.params.postId])
     // INNER JOIN posts ON comments.post_id = posts.id
     .then(([rows, fields]) => res.status(200).json({ comments: rows }))
     .catch(error => res.status(500).json({ error:error.message }));

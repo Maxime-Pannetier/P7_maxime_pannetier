@@ -72,7 +72,7 @@ export default {
 
 }
 
-//  v-if="post.user_id == user.userId || user.isAdmin == 1" class="deleteButton" @click="deletePost()"
+
 
 
 
@@ -126,6 +126,11 @@ export default {
 .deleteButton{
     background-color: red;
     float: right;
+}
+
+img{
+    width: 100%;
+    height: auto;
 }
 
 </style>
