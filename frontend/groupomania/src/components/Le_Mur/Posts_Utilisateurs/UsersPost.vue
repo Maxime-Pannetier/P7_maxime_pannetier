@@ -52,7 +52,7 @@ export default {
     mounted(){
     this.userId= parseInt(localStorage.getItem("userId"));
     this.isAdmin= localStorage.getItem("isAdmin") == "1";
-    console.log(this.userId);
+    
   },
 
     
@@ -85,7 +85,7 @@ export default {
 .usersPost{
     width: 50%;
     height: 100%;
-    background-color: whitesmoke;
+    background-color:lightcoral;
     border: solid 1px black;
     border-radius: 20px;
     margin: 20px auto;

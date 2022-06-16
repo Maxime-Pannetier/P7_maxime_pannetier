@@ -3,7 +3,7 @@
         <input v-model="createPostContent" type="text" id="createPost" name="createPost" placeholder="écrire un statut">
         <button @click="createPost()" class="sendPost" type="button">Envoyer</button>
         
-        <input @change="onFileChanged($event)" type="file" name="imagePost" accept="image/*">
+        <input class="addfile" @change="onFileChanged($event)" type="file" name="imagePost" accept="image/*">
         
         
 
@@ -62,5 +62,7 @@ export default {
 
 
 <style scoped>
+
+
 
 </style>

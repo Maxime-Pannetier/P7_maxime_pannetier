@@ -53,8 +53,12 @@ export default {
 
 .CommentsUsers{
   width: 100%;
+  height: 100%;
+  box-sizing: border-box;
   background-color: whitesmoke;
+  border-radius: 15px;
   text-align: left;
+  padding: 5px;
 }
 
 /* BOUTON AFFICHER COMMENTAIRE */
@@ -62,22 +66,25 @@ export default {
   color: darkgray;
   text-align: left;
   border: none;
-  margin: 10px 0;
+  margin: 5px 5px;
   background-color: whitesmoke;
   font-size: 15px;
 }
 
 /* LISTE DES COMMENTAIRES */
 .postCommentsList{
-  margin:5px 0;
+  
+  margin:5px 5px;
 }
 
 .postComment{
-  width: 100%;
+  width: 95%;
+  margin: 5px;
   display: grid;
   grid-template-columns: 30% 70%;
   background-color: white;
   border: solid 2px darkgrey;
+  border-radius: 15px;
 }
 
 .commentUsername{

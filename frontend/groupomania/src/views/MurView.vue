@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <div class="disconnect-button" @click="disconnect()"><i class="fa-solid fa-power-off"></i></div>
     <CreatePost @newPost="getAllPosts()"/> <!-- @newPost = evenement arbitraire -->
     <UsersPost @postRemoved="getAllPosts()" v-for="post in posts"  v-bind:key="post.id" v-bind:post="post"/>
     
@@ -38,10 +39,29 @@ export default {
         console.log(error.response.data);
       });
     },
+    disconnect(){
+      localStorage.clear();
+      this.$router.push(this.$route.query.redirect || '/');
+    }
+
+
     }
 }
 </script>
 
 <style scoped>
+  .disconnect-button{
+    position: absolute;
+    top:40px;
+    right:25px;
+    padding: 10px;
+    border: solid 1px black;
+    border-radius: 50%;
+  }
+
+  .home{
+    background-color:royalblue;
+  }
+
 
 </style>

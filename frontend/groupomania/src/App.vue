@@ -1,13 +1,12 @@
 <template>
-  <div>
-  <!-- <nav>
-    <router-link to="/">Le Mur</router-link> | 
-    <router-link to="/Connexion">Page de Connexion</router-link>
-  </nav> -->
-
-  <router-view/>
   
+  <div>
+    
+    <img alt="logo Groupomania" src="./assets/logo.png">
+    <router-view/>
+    
   </div>
+  
 </template>
 
 <style>
