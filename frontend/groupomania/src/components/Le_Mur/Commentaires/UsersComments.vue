@@ -2,12 +2,13 @@
     <div class="CommentsUsers">
 
         <!-- afficher commentaires -->
-        <input class="showComment" type="button" value="afficher les commentaires" @click="showAllComment()">            
+        <input class="showComment" type="button" value="afficher les commentaires" @click="showAllComment($event)">            
             
         <!-- contenu commentaire -->
         <div v-for="comment in comments" v-bind:key="comment.id" class="postCommentsList"  >
           <div class="postComment"  >
             <div  class="commentUsername">{{comment.prenom}} {{comment.nom}}</div>
+            <div v-if= "user_id==comments.user_id || isAdmin"  class="deleteButton" @click="deleteComment(comment.id)"><i class="fa-solid fa-trash"></i></div>
             <div  class="commentContent">{{comment.commentsContent}}</div>
           </div>
         </div>
@@ -25,24 +26,49 @@ export default {
   data(){
     return{
       comments:[],
+      user_id:0,
+      isAdmin:false,
       
     };
   },
+   mounted(){
+    this.user_id= parseInt(localStorage.getItem("userId"));
+    this.isAdmin= localStorage.getItem("isAdmin") == "1";
+    
+  },
+  
   props: {
      postId: Number,
     },
   
   methods:{
-    showAllComment(){
+    showAllComment(e){
       console.log("recuperation de commentaire");
+      if(this.comments.length>0){
+        this.comments=[];
+        return;
+      }
       axios.get("http://localhost:3000/api/comment/"+this.postId)
       .then((response)=>{
         this.comments=response.data.comments;
+        e.target.value= this.comments.length>0? "Cliquer pour actualiser" : "Aucun commentaire";
       })
       .catch((error)=>{
         console.log(error.response.data);
       });
     },
+    deleteComment(commentId){
+            console.log(commentId);
+            axios.delete("http://localhost:3000/api/comment/"+commentId)
+                .then((response)=>{
+                    this.$emit("commentRemoved");
+                    console.log(response.data);
+                    this.showAllComment();
+      })
+      .catch((error)=>{
+        console.log(error.response.data);
+      });
+        }
    
 
     }
@@ -97,6 +123,12 @@ export default {
   border-left: solid 1px darkgray;
   padding: 10px;
   
+}
+
+.deleteButton{
+  position: relative;
+  top:0;
+  right: 0;
 }
 
 

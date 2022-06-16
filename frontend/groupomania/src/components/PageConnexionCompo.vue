@@ -79,7 +79,7 @@ export default {
         localStorage.setItem("userId", response.data.userId);
         localStorage.setItem("userPrenom", response.data.userPrenom);
         
-        this.$router.push(this.$route.query.redirect || '/Mur');
+        this.$router.push('/Mur');
         console.log("bonjour " + response.data.userPrenom);
 
       })

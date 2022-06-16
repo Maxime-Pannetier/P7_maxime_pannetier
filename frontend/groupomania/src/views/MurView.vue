@@ -41,7 +41,7 @@ export default {
     },
     disconnect(){
       localStorage.clear();
-      this.$router.push(this.$route.query.redirect || '/');
+      this.$router.push('/');
     }
 
 
