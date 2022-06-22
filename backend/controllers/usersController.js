@@ -78,3 +78,19 @@ exports.signup = (req, res, next) => {
       })
       .catch(error => res.status(500).json({ error:error.message }));
       };
+
+      exports.deleteUser = (req, res, next) => {
+    
+        database.execute("SELECT * FROM users WHERE id=?", [req.params.id])
+            .then(([rows, fields]) => {
+                console.log(rows[0]);
+                if(req.currentUser.isAdmin === 1 || (rows.length>0 && rows[0].id === req.currentUser.userId)){
+                    database.execute ("DELETE FROM users WHERE id=?", [req.params.id] )
+                    .then(() => res.status(201).json({ message: 'user supprimé !' }))
+                    .catch(error => res.status(500).json({ error: error.message }));
+                }else{
+                    res.status(401).json({error:"vous ne pouvez pas"});
+                }
+            })
+            .catch(error => res.status(500).json({ error: error.message }));
+    };

@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <div class="profil-button" @click="goProfil()"><i class="fa-solid fa-user"></i></div>
     <div class="disconnect-button" @click="disconnect()"><i class="fa-solid fa-power-off"></i></div>
     <CreatePost @newPost="getAllPosts()"/> <!-- @newPost = evenement arbitraire -->
     <UsersPost @postRemoved="getAllPosts()" v-for="post in posts"  v-bind:key="post.id" v-bind:post="post"/>
@@ -42,7 +43,12 @@ export default {
     disconnect(){
       localStorage.clear();
       this.$router.push('/');
+    },
+
+    goProfil(){
+      this.$router.push('/profil');
     }
+
 
 
     }
@@ -54,6 +60,15 @@ export default {
     position: absolute;
     top:40px;
     right:25px;
+    padding: 10px;
+    border: solid 1px black;
+    border-radius: 50%;
+  }
+
+  .profil-button{
+    position: absolute;
+    top:40px;
+    left:25px;
     padding: 10px;
     border: solid 1px black;
     border-radius: 50%;

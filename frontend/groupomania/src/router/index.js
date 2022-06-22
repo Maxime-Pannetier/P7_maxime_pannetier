@@ -15,6 +15,13 @@ const routes = [ // routes qui se chargent dans app.vue
     component: () => import('../views/MurView.vue')
     
   },
+
+  {
+    path: '/profil',
+    name: 'profil',
+    component: () => import('../views/ProfilView.vue')
+    
+  },
   
  
 ]
