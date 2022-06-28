@@ -63,7 +63,7 @@ export default {
 <style scoped>
 /* POST ENTIER */
 .usersPost {
-    width: 50%;
+    width: 75%;
     height: 100%;
     background-color: rgb(191, 209, 255);
     border: solid 1px black;
