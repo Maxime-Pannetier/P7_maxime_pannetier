@@ -6,20 +6,20 @@
     <p v-if="mode == 'login'"> Pas encore inscrit ? <span @click="signUpMode()">Inscription</span></p>
     <p v-else> Déjà inscrit ? <span @click="connectMode()">Connexion</span></p>
        
-    <div >
+    <div class="email" >
       <input v-model="email" type="text" placeholder="Adresse mail"/>
     </div>
 
-    <div v-if="mode == 'create'">
+    <div class="info" v-if="mode == 'create'">
       <input v-model="prenom" type="text" placeholder="Prénom"/> <br><br>
       <input v-model="nom" type="text" placeholder="Nom"/>
     </div>
         
-    <div >
+    <div class="password" >
       <input v-model="password" type="password" placeholder="Mot de passe"/>
     </div>
 
-    <div>
+    <div class="buttonLogSign">
       <button @click="doLogin()" class="button" v-if="mode == 'login'">
         <span>Connexion</span>
       </button>
@@ -104,39 +104,30 @@ export default {
 }
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 .firstPage {
-  width: 70%;
-  margin: auto;
+ 
   border: solid 1px black;
+  margin: auto;
+  max-width: 500px;
 }
 
 h1{
   margin: 20px auto;
 }
 
-div {
+.email, .info, .password, .buttonLogSign  {
   margin: 20px auto;
+  
+}
+
+@media screen and (max-width: 425px)
+{
+  .firstPage{
+    width: 100%;
+  }
 }
 
 </style>

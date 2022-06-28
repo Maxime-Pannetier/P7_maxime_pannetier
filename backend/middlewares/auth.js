@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
-const dbconfig = require("../config/db");
 
-
+// MIDDLEWARE D'AUTHENTIFICATION
 module.exports = (req, res, next) => {
   try {
     const token = req.headers.authorization;
@@ -15,7 +14,7 @@ module.exports = (req, res, next) => {
     }
   } catch {
     res.status(401).json({
-      error:'Invalid request!'
+      error: 'Invalid request!'
     });
   }
 };

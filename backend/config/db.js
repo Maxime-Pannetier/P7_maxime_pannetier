@@ -1,6 +1,6 @@
 const mysql = require("mysql2/promise")
 
-//CONNECTION A LA DB
+//CONNECTION A LA BDD
 const dbConnections = mysql.createPool({
     host : 'localhost',
     user : 'root',

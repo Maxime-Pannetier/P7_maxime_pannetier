@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-//import MurView from '../views/MurView.vue'
 import connexionView from '../views/PageConnexionView.vue'
 
 const routes = [ // routes qui se chargent dans app.vue

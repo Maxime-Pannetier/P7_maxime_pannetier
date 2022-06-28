@@ -6,13 +6,15 @@
             
         <!-- contenu commentaire -->
         <div v-for="comment in comments" v-bind:key="comment.id" class="postCommentsList"  >
+          
           <div class="postComment"  >
-            <div  class="commentUsername">{{comment.prenom}} {{comment.nom}}</div>
-            <div v-if= "user_id==comments.user_id || isAdmin"  class="deleteButton" @click="deleteComment(comment.id)"><i class="fa-solid fa-trash"></i></div>
+            
+            <div  class="commentUsername">{{comment.prenom}} {{comment.nom}}</div>    
             <div  class="commentContent">{{comment.commentsContent}}</div>
+            <div v-if= "user_id==comments.user_id || isAdmin"  class="deleteButton" @click="deleteComment(comment.id)"><i class="fa-solid fa-trash"></i></div>
           </div>
+          
         </div>
-
     </div>
 </template>
 
@@ -43,7 +45,7 @@ export default {
   
   methods:{
     showAllComment(e){
-      console.log("recuperation de commentaire");
+      
       if(this.comments.length>0){
         this.comments=[];
         return;
@@ -58,7 +60,7 @@ export default {
       });
     },
     deleteComment(commentId){
-            console.log(commentId);
+            
             axios.delete("http://localhost:3000/api/comment/"+commentId)
                 .then((response)=>{
                     this.$emit("commentRemoved");
@@ -107,7 +109,7 @@ export default {
   width: 95%;
   margin: 5px;
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 25% 65% 10px;
   background-color: white;
   border: solid 2px darkgrey;
   border-radius: 15px;
@@ -126,11 +128,8 @@ export default {
 }
 
 .deleteButton{
-  position: relative;
-  top:0;
-  right: 0;
+  margin: auto 5px;
 }
-
 
 </style>
 

@@ -1,9 +1,7 @@
 <template>
     <div class="createCommentForm">
-
         <input v-model="createCommentContent" type="text" class="createComment" name="createComment" placeholder="écrire un commentaire">
-        <button @click="createComment()" class="sendComment" type="button">Envoyer</button>
-        
+        <button @click="createComment()" class="sendComment" type="button">Envoyer</button>       
     </div>
 </template>
 
@@ -11,12 +9,10 @@
 
   import axios from 'axios'
   
-
   export default {
 
     name: 'createComment',
-    props: {
-     
+    props: {     
      postId: Number,
     },
 
@@ -27,11 +23,7 @@
     },
 
     methods:{
-      
-
-
       createComment(){
-        console.log("creation de commentaire");
         
         axios.post("http://localhost:3000/api/comment/", {createComment:this.createCommentContent, postId:this.postId} )
         .then(()=>{
