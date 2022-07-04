@@ -116,7 +116,7 @@ img {
 @media screen and (max-width: 600px)
 {
   .usersPost{
-    width: 100%;
+    width: 93%;
     max-width: 500px;
   }
 }
