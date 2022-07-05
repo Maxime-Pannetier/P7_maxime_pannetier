@@ -11,7 +11,7 @@
             
             <div  class="commentUsername">{{comment.prenom}} {{comment.nom}}</div>    
             <div  class="commentContent">{{comment.commentsContent}}</div>
-            <div v-if= "user_id==comments.user_id || isAdmin"  class="deleteButton" @click="deleteComment(comment.id)"><i class="fa-solid fa-trash"></i></div>
+            <div v-if= "user_id==comment.user_id || isAdmin"  class="deleteButton" @click="deleteComment(comment.id)"><i class="fa-solid fa-trash"></i></div>
           </div>
           
         </div>
