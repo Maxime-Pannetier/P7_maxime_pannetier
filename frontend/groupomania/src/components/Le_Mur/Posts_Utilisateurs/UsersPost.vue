@@ -11,7 +11,7 @@
         <div class="postContent">
             <div class="postTextContent">{{ post.postContent }}</div>
             <div v-if="post.imgPost" class="postImageContent">
-                <img :src="'http://localhost:3000/images/' + post.imgPost" />
+                <img :src="'http://localhost:3000/images/' + post.imgPost" alt="post.imgPost" />
             </div>
         </div>
 
@@ -65,7 +65,7 @@ export default {
 .usersPost {
     width: 75%;
     height: 100%;
-    background-color: rgb(191, 209, 255);
+    background-color:rgba(19,36,66,255); 
     border: solid 1px black;
     border-radius: 20px;
     margin: 20px auto;
@@ -78,7 +78,7 @@ export default {
     height: 20px;
     text-align: left;
     font-weight: bold;
-    color: black;
+    color: white;
 }
 
 /* CONTENUE ENTIER DU POST */

@@ -1,8 +1,12 @@
 <template>
   <div id=createPost>
-    <input v-model="createPostContent" type="text" id="createPost" name="createPost" placeholder="écrire un statut">
+    <input v-model="createPostContent" type="text" id="createPostInput" name="createPost" placeholder="écrire un statut">
+    <form name="imagePost">
+      <input id="imagePost" @change="onFileChanged($event)" type="file" accept="image/*">
+      <label for="imagePost">.jpg</label>
+    </form>
     <button @click="createPost()" class="sendPost" type="button">Envoyer</button>
-    <input class="addfile" @change="onFileChanged($event)" type="file" name="imagePost" accept="image/*">
+    
   </div>
 </template>
 
@@ -22,28 +26,38 @@ export default {
   },
   methods: {
     createPost() {
-      console.log("creation de post");
-      let data = new FormData();
+      
+        let data = new FormData();
       data.append("createPost", this.createPostContent);
       data.append("image", this.postFile);
+
+      if(!(this.createPostContent == "" && this.postFile=="")){
       axios.post("http://localhost:3000/api/posts/", data)
         .then(() => {
           this.$emit("newPost");
+          this.createPostContent="";
+          document.forms['imagePost'].reset();
+          this.postFile="";       
         })
         .catch((error) => {
           console.log(error.response.data);
         });
+      }
+      else{
+        console.log("Votre Post est vide")
+      }
+      
     },
-    showAllPost() {
-      console.log("affichage des post");
-      axios.get("http://localhost:3000/api/post/showAllPost",)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error.response.data);
-        });
-    },
+    // showAllPost() {
+    //   console.log("affichage des post");
+    //   axios.get("http://localhost:3000/api/post/showAllPost",)
+    //     .then((response) => {
+    //       console.log(response.data);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error.response.data);
+    //     });
+    // },
     onFileChanged(event) {
       this.postFile = event.target.files[0];
     }
@@ -53,4 +67,7 @@ export default {
 
 
 <style scoped>
+
+
+
 </style>

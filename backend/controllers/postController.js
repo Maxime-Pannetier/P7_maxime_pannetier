@@ -1,5 +1,12 @@
 const database = require("../config/db");
 
+// AFFICHER POSTS
+exports.showAllPost = (req, res, next) => {
+    database.execute("SELECT posts.id,users.isAdmin, users_id, postContent,imgPost, nom, prenom FROM posts INNER JOIN users ON posts.users_id = users.id ORDER BY posts.id DESC")
+        .then(([rows, fields]) => res.status(200).json({ posts: rows }))
+        .catch(error => res.status(500).json({ error: error.message }));
+};
+
 // CREATION POST
 exports.createPost = (req, res, next) => {
     // imgPost (présence de fichier ?)
@@ -12,12 +19,7 @@ exports.createPost = (req, res, next) => {
         .catch(error => res.status(500).json({ error: error.message }));
 };
 
-// AFFICHER POSTS
-exports.showAllPost = (req, res, next) => {
-    database.execute("SELECT posts.id,users.isAdmin, users_id, postContent,imgPost, nom, prenom FROM posts INNER JOIN users ON posts.users_id = users.id ORDER BY posts.id DESC")
-        .then(([rows, fields]) => res.status(200).json({ posts: rows }))
-        .catch(error => res.status(500).json({ error: error.message }));
-};
+
 
 // SUPPRIMER POST
 exports.deletePost = (req, res, next) => {

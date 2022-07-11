@@ -91,7 +91,7 @@ export default {
 
 /* BOUTON AFFICHER COMMENTAIRE */
 .showComment{
-  color: darkgray;
+  color: black;
   text-align: left;
   border: none;
   margin: 5px 5px;
