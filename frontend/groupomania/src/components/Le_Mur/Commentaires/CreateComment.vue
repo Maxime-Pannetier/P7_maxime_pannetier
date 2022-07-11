@@ -28,6 +28,7 @@
           axios.post("http://localhost:3000/api/comment/", {createComment:this.createCommentContent, postId:this.postId} )
         .then(()=>{
          this.$emit("newComment");
+         this.createCommentContent='';
           })
         .catch((error)=>{
         console.log(error.response.data);
