@@ -2,7 +2,7 @@ prerequis : nodeJS, MySQL
 
 
 1) cloner repository
-2) installer base de données
+2) installer base de données -> extraire BDD_Groupomania.zip -> importer les fichiers dans la base de données de votre choix (via phpmyadmin ou mysql workbench)
 3) configurer .env
   -> dupliquer template.env
   -> le renommer la copie en .env
