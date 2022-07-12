@@ -1,13 +1,43 @@
-prerequis : nodeJS, MySQL
 
+## INSTALLATION
+### Prérequis :
 
-1) cloner repository
-2) installer base de données -> extraire BDD_Groupomania.zip -> importer les fichiers dans la base de données de votre choix (via phpmyadmin ou mysql workbench)
-3) configurer .env
-  -> dupliquer template.env
-  -> le renommer la copie en .env
-  -> éditer et remplir les variables avec votre configuration local (entre autre le nom de la base de donnée dans laquelle vous avez importé les tables)
-4) back -> cd backend -> npm install -> npm run start
-5) front -> cd frontend -> cd groupomania -> npm install -> npm run serve
-6) ouvrir localhost:8080
+<ul>
+  <li> Git</li>
+  <li> Node.js</li>
+  <li> MySql</li>
+</ul>
 
+Créer un dossier vide puis cloner ce repository à l'intérieur : 
+
+```
+git clone https://github.com/Maxime-Pannetier/P7_maxime_pannetier.git
+```
+## MySQL
+### Creer et importer BDD
+<ol>
+  <li>Creer Base de données</li>
+  <li>Importer les éléments du fichier "BDD_Groupomania" dans la base de donnée créée</li>  
+</ol>
+ 
+### Configurer .env
+<ol>
+  <li>dupliquer template.env</li>
+  <li>renommer la copie en .env</li>
+  <li>éditer et remplir les variables avec votre configuration local</li>
+</ol>
+
+## BACK END
+Ouvrir un terminal dans le dossier backend puis effectuer ces lignes de commandes :
+```
+npm install
+npm run start
+```
+## FRONT END
+Ouvrir un autre terminal dans le dossier frontend puis effectuer les lignes de commandes suivantes :
+```
+npm install
+npm run serve
+```
+## LANCEMENT
+Ouvrir le navigateur a l'adresse http://localhost:8080/
