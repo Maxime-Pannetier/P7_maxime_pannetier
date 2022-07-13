@@ -46,9 +46,9 @@ export default {
     methods: {
         deletePost() {
             axios.delete("http://localhost:3000/api/posts/" + this.post.id)
-                .then((response) => {
+                .then(() => {
                     this.$emit("postRemoved");
-                    console.log(response.data);
+                    
                 })
                 .catch((error) => {
                     console.log(error.response.data);

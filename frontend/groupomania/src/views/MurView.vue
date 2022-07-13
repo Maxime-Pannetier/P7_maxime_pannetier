@@ -27,10 +27,10 @@ export default {
   },
   methods: {
     getAllPosts() {
-      console.log("recuperation de post");
+      
       axios.get("http://localhost:3000/api/posts/")
         .then((response) => {
-          console.log(response.data);
+          
           this.posts = response.data.posts;
         })
         .catch((error) => {

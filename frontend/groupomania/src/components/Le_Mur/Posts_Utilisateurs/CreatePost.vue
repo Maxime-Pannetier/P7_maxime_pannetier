@@ -48,16 +48,7 @@ export default {
       }
       
     },
-    // showAllPost() {
-    //   console.log("affichage des post");
-    //   axios.get("http://localhost:3000/api/post/showAllPost",)
-    //     .then((response) => {
-    //       console.log(response.data);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error.response.data);
-    //     });
-    // },
+   
     onFileChanged(event) {
       this.postFile = event.target.files[0];
     }

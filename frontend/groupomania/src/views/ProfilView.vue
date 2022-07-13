@@ -30,10 +30,10 @@ export default {
     },
     methods: {
         deleteUser() {
-            console.log(this.userId);
+           
             axios.delete("http://localhost:3000/api/user/" + this.userId)
-                .then((response) => {
-                    console.log(response.data);
+                .then(() => {
+                    
                     localStorage.clear();
                     this.$router.push('/');
                 })

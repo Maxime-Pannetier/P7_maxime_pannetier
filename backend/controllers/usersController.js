@@ -50,7 +50,7 @@ exports.login = (req, res, next) => {
   // recherche email existe dans BDD
   database.execute("SELECT `email`,`password`,`isAdmin`, `id`, `prenom` FROM users WHERE `email`=?;", [req.body.email])
     .then(([rows, fields]) => {
-      console.log(rows);
+      
       // email n'existe pas
       if (rows.length == 0) {
         return res.status(401).json({ error: 'Utilisateur non trouvé !' });

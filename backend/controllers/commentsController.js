@@ -19,8 +19,6 @@ exports.showAllComment = (req, res, next) => {
 exports.deleteComment = (req, res, next) => {
     database.execute("SELECT * FROM comments WHERE id=?", [req.params.id])
         .then(([rows, fields]) => {
-            console.log(rows[0]);
-            console.log(req.currentUser);
             if (req.currentUser.isAdmin === 1 || (rows.length > 0 && rows[0].user_id === req.currentUser.userId)) {
                 database.execute("DELETE FROM comments WHERE id=?", [req.params.id])
                     .then(() => res.status(201).json({ message: 'Comment supprimé !' }))

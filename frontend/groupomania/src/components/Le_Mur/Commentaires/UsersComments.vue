@@ -62,9 +62,9 @@ export default {
     deleteComment(commentId){
             
             axios.delete("http://localhost:3000/api/comment/"+commentId)
-                .then((response)=>{
+                .then(()=>{
                     this.$emit("commentRemoved");
-                    console.log(response.data);
+                   
                     this.showAllComment();
       })
       .catch((error)=>{

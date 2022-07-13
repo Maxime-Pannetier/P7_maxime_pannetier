@@ -64,7 +64,7 @@ export default {
       
       axios.post("http://localhost:3000/api/user/login",{email:this.email, password:this.password})
       .then((response)=>{
-        console.log(response.data);
+        
         
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("isAdmin",response.data.isAdmin);
@@ -72,7 +72,7 @@ export default {
         localStorage.setItem("userPrenom", response.data.userPrenom);
         
         this.$router.push('/Mur');
-        console.log("bonjour " + response.data.userPrenom);
+        
 
       })
       .catch((error)=>{
@@ -83,8 +83,8 @@ export default {
     doSignUp(){
         
         axios.post("http://localhost:3000/api/user/signup",{email:this.email, password:this.password, prenom:this.prenom, nom:this.nom})
-        .then((response)=>{
-          console.log(response.data);
+        .then(()=>{
+          
           this.mode='login';
          })
         .catch((error)=>{
