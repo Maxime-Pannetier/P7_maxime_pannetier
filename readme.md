@@ -16,8 +16,8 @@ git clone https://github.com/Maxime-Pannetier/P7_maxime_pannetier.git
 ## MySQL
 ### Creer et importer BDD
 <ol>
-  <li>Creer Base de données</li>
-  <li>Importer les éléments du fichier "BDD_Groupomania" dans la base de donnée créée</li>  
+  <li>Creer Base de données et l'utiliser</li>
+  <li>Importer les éléments du fichier "BDD_Groupomania.zip" dans la base de donnée créée</li>  
 </ol>
  
 ### Configurer .env
